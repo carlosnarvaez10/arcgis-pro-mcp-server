@@ -158,15 +158,6 @@ The `ejecutar_arcpy` tool has direct access to:
 - `mapa` — the active map
 
 ---
-
-## Why No Add-in?
-
-ArcGeek Tools offers a similar MCP connection as part of a paid toolbox ($35/year). This project replicates **only that connection functionality** using a lightweight bridge script — no add-in installation, no external dependencies beyond the `mcp` package.
-
-The trade-off: you run one line in the Python Window at the start of each session instead of clicking a button in the ribbon.
-
----
-
 ## Troubleshooting
 
 **Claude doesn't see the server (not shown in Developer settings)**
