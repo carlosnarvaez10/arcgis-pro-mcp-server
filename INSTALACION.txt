@@ -1,0 +1,114 @@
+══════════════════════════════════════════════════
+  ArcGIS Pro MCP — Instalación en 4 pasos
+  GeoSIG Ingenieros EIRL
+══════════════════════════════════════════════════
+
+ARCHIVOS NECESARIOS
+───────────────────
+  bridge.py              → corre dentro de ArcGIS Pro
+  arcgis_mcp_server.py   → Claude Desktop lo lanza
+
+PASO 1 — Copiar archivos
+────────────────────────
+Crea la carpeta:
+  C:\GIS\mcp\
+
+Copia ahí los dos archivos:
+  C:\GIS\mcp\bridge.py
+  C:\GIS\mcp\arcgis_mcp_server.py
+
+
+PASO 2 — Instalar paquete mcp en arcgispro-py3
+───────────────────────────────────────────────
+Abre: Inicio → ArcGIS → Python Command Prompt
+
+Ejecuta:
+  pip install mcp
+
+Verifica:
+  python -c "import mcp; print('OK')"
+
+Para saber la ruta exacta de tu Python:
+  where python
+  (anota esa ruta, la necesitas en el Paso 3)
+
+
+PASO 3 — Configurar Claude Desktop
+────────────────────────────────────
+Abre el archivo:
+  %APPDATA%\Claude\claude_desktop_config.json
+
+Si no existe, créalo. Pega esto (ajusta la ruta de python.exe):
+
+{
+  "mcpServers": {
+    "arcgis_pro": {
+      "command": "C:\\Program Files\\ArcGIS\\Pro\\bin\\Python\\envs\\arcgispro-py3\\python.exe",
+      "args": ["C:\\GIS\\mcp\\arcgis_mcp_server.py"]
+    }
+  }
+}
+
+  ⚠ Reemplaza la ruta de python.exe con la que obtuviste en el Paso 2.
+  ⚠ Si ya tienes otros mcpServers, agrega solo el bloque "arcgis_pro"
+    dentro del objeto "mcpServers" existente.
+
+Guarda el archivo.
+
+Cierra Claude Desktop completamente:
+  Ctrl+Shift+Esc → buscar proceso Claude → Finalizar tarea
+
+Vuelve a abrir Claude Desktop.
+Verifica: Settings → Developer → "arcgis_pro" debe aparecer en verde.
+
+
+PASO 4 — Arrancar el bridge en ArcGIS Pro
+──────────────────────────────────────────
+(Cada vez que abras ArcGIS Pro y quieras usar Claude)
+
+1. Abre ArcGIS Pro con tu proyecto
+2. Ve a: Vista → Ventana Python  (o Ctrl+Alt+P en algunas versiones)
+3. Escribe esta línea y presiona Enter:
+
+   exec(open(r"C:\GIS\mcp\bridge.py").read())
+
+4. Debes ver:
+   ✅ ArcGIS MCP Bridge corriendo en http://127.0.0.1:6789
+      Proyecto activo: C:\ruta\a\tu\proyecto.aprx
+      Ahora abre Claude Desktop y empieza a chatear.
+
+¡Listo! Desde Claude Desktop puedes escribir en lenguaje natural
+y Claude ejecutará los geoprocesos directamente en ArcGIS Pro.
+
+
+EJEMPLOS DE USO EN CLAUDE DESKTOP
+────────────────────────────────────
+"¿Qué capas tengo activas en el mapa?"
+
+"Crea un buffer de 500m sobre la capa Red_Hidrica
+ y agrégalo al mapa."
+
+"Delimita la cuenca desde el DEM_ALOS usando el punto
+ de cierre en UTM 18S: Este 671450, Norte 8498220."
+
+"Calcula el coeficiente de Gravelius para todas las
+ subcuencas en Subcuencas y muéstrame los resultados."
+
+"Redacta el párrafo morfométrico de la memoria descriptiva
+ para la subcuenca CHIMBAO con Área=142 km², Kc=1.61."
+
+
+SOLUCIÓN DE PROBLEMAS
+───────────────────────
+❌ "No se pudo conectar al bridge"
+   → ¿Ejecutaste bridge.py en la ventana Python de ArcGIS Pro?
+   → ¿ArcGIS Pro está abierto con un proyecto activo?
+
+❌ "No module named 'mcp'"
+   → pip install mcp  (en Python Command Prompt de ArcGIS Pro)
+
+❌ Claude Desktop no muestra "arcgis_pro" en verde
+   → Verifica que el JSON sea válido (sin comas finales)
+   → Cierra Claude con el Administrador de Tareas y vuelve a abrir
+
+══════════════════════════════════════════════════
