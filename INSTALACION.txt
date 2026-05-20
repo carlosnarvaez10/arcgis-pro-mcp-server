@@ -79,24 +79,6 @@ PASO 4 — Arrancar el bridge en ArcGIS Pro
 ¡Listo! Desde Claude Desktop puedes escribir en lenguaje natural
 y Claude ejecutará los geoprocesos directamente en ArcGIS Pro.
 
-
-EJEMPLOS DE USO EN CLAUDE DESKTOP
-────────────────────────────────────
-"¿Qué capas tengo activas en el mapa?"
-
-"Crea un buffer de 500m sobre la capa Red_Hidrica
- y agrégalo al mapa."
-
-"Delimita la cuenca desde el DEM_ALOS usando el punto
- de cierre en UTM 18S: Este 671450, Norte 8498220."
-
-"Calcula el coeficiente de Gravelius para todas las
- subcuencas en Subcuencas y muéstrame los resultados."
-
-"Redacta el párrafo morfométrico de la memoria descriptiva
- para la subcuenca CHIMBAO con Área=142 km², Kc=1.61."
-
-
 SOLUCIÓN DE PROBLEMAS
 ───────────────────────
 ❌ "No se pudo conectar al bridge"
