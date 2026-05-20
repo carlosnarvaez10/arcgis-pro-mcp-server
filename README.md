@@ -261,6 +261,6 @@ Un servidor MCP que conecta **Claude Desktop** con **ArcGIS Pro** sin plugins de
    ```
 
 ### Desarrollado por
+[GeoSIG Ingenieros]
+(https://geosigingenieros.com.pe)  
 
-[GeoSIG Ingenieros EIRL](https://geosigingenieros.com.pe) — Ayacucho, Perú  
-Especialistas en GIS, hidrología, morfometría y cartografía para entidades públicas en Perú.
