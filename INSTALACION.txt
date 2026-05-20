@@ -1,6 +1,5 @@
 ══════════════════════════════════════════════════
   ArcGIS Pro MCP — Instalación en 4 pasos
-  GeoSIG Ingenieros EIRL
 ══════════════════════════════════════════════════
 
 ARCHIVOS NECESARIOS
